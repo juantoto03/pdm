@@ -8,9 +8,9 @@ import {
   View,
   TextInput,
   Button,
- } from 'react-native';
+} from 'react-native';
 
-export default class RegisterDeviceScreen extends React.Component {
+export default class AddDeviceScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
@@ -21,8 +21,7 @@ export default class RegisterDeviceScreen extends React.Component {
       TextInputTipo: '',
       TextInputMarca: '',
       TextInputModelo: '',
-      TextInputSerial: '',
-      TextInputUAP: '',
+      TextInputCaract: '',
     }
   }
 
@@ -31,8 +30,7 @@ export default class RegisterDeviceScreen extends React.Component {
     const {TextInputTipo} =this.state;
     const {TextInputMarca} =this.state;
     const {TextInputModelo} =this.state;
-    const {TextInputSerial} =this.state;
-    const {TextInputUAP} =this.state;
+    const {TextInputCaract} =this.state;
 
     fetch('http://192.168.56.1/pdm/deviceinsert.php', {
       method: 'POST',
@@ -44,8 +42,7 @@ export default class RegisterDeviceScreen extends React.Component {
         tipo: TextInputTipo,
         marca: TextInputMarca,
         modelo: TextInputModelo,
-        caract: TextInputSerial,
-        caract: TextInputUAP,
+        caract: TextInputCaract,
       }).then((response) => response.json())
         .then((responseJson) => {
           alert.alert(responseJson);
@@ -63,12 +60,12 @@ export default class RegisterDeviceScreen extends React.Component {
             <Image
               source={
                 __DEV__
-                  ? require('../assets/images/register-device.png')
-                  : require('../assets/images/register-device.png')
+                  ? require('../assets/images/add-device.png')
+                  : require('../assets/images/add-device.png')
               }
               style={styles.welcomeImage}
             />
-            <Text style={styles.getStartedText}>Registrar Dispositivo</Text>
+            <Text style={styles.getStartedText}>Agregar Dispositivo</Text>
           </View>
 
           <View style={styles.getStartedContainer}>
@@ -93,22 +90,15 @@ export default class RegisterDeviceScreen extends React.Component {
               underlineColorAndroid = 'transparent'
               style = {styles.TextInputStyle}
             />
-            <Text style={styles.getStartedText}>Número de Serie:</Text>
+            <Text style={styles.getStartedText}>Caracteristicas:</Text>
             <TextInput
-              placeholder = "Ingrese N/S"
-              onChangeText = {TextInputSerial => this.setState({TextInputSerial})}
-              underlineColorAndroid = 'transparent'
-              style = {styles.TextInputStyle}
-            />
-            <Text style={styles.getStartedText}>UAP:</Text>
-            <TextInput
-              placeholder = "Ingrese UAP"
-              onChangeText = {TextInputUAP => this.setState({TextInputUAP})}
+              placeholder = "Ingrese Caractristicas"
+              onChangeText = {TextInputCaract => this.setState({TextInputCaract})}
               underlineColorAndroid = 'transparent'
               style = {styles.TextInputStyle}
             />
             <View style={[styles.SubmitButton]}>
-              <Button title="REGITRAR" onPress={this.InserDataToServer} color='#ff9633'/>
+              <Button title="AGREGAR" onPress={this.InserDataToServer} color='#ff9633'/>
             </View>
           </View>
         </ScrollView>
@@ -134,7 +124,7 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 20,
     marginBottom: 20,
   },
   welcomeImage: {
@@ -149,7 +139,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 50,
   },
-  RegisterDeviceScreenFilename: {
+  AddDeviceScreenFilename: {
     marginVertical: 7,
   },
   SubmitButton: {

@@ -10,7 +10,7 @@ import {
   Button,
  } from 'react-native';
 
-export default class RegisterDeviceScreen extends React.Component {
+export default class AddUserScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
@@ -63,52 +63,45 @@ export default class RegisterDeviceScreen extends React.Component {
             <Image
               source={
                 __DEV__
-                  ? require('../assets/images/register-device.png')
-                  : require('../assets/images/register-device.png')
+                  ? require('../assets/images/add-user.png')
+                  : require('../assets/images/add-user.png')
               }
               style={styles.welcomeImage}
             />
-            <Text style={styles.getStartedText}>Registrar Dispositivo</Text>
+            <Text style={styles.getStartedText}>Agregar Usuario</Text>
           </View>
-
+          
           <View style={styles.getStartedContainer}>
-            <Text style={styles.getStartedText}>Tipo:</Text>
+            <Text style={styles.getStartedText}>Nombre:</Text>
             <TextInput
-              placeholder = "Ingreser Tipo"
-              onChangeText = {TextInputTipo => this.setState({TextInputTipo})}
+              placeholder = "Ingrese Nombre"
+              onChangeText = {TextInpuNombret => this.setState({TextInputNombre})}
               underlineColorAndroid = 'transparent'
               style = {styles.TextInputStyle}
             />
-            <Text style={styles.getStartedText}>Marca:</Text>
+            <Text style={styles.getStartedText}>Apellidos:</Text>
             <TextInput
-              placeholder = "Ingrese Marca"
-              onChangeText = {TextInputMarca => this.setState({TextInputMarca})}
+              placeholder = "Ingrese Apellidos"
+              onChangeText = {TextInputApellidos => this.setState({TextInputApellidos})}
               underlineColorAndroid = 'transparent'
               style = {styles.TextInputStyle}
             />
-            <Text style={styles.getStartedText}>Modelo:</Text>
+            <Text style={styles.getStartedText}>Correo:</Text>
             <TextInput
-              placeholder = "Ingrese Modelo"
-              onChangeText = {TextInputModelo => this.setState({TextInputModelo})}
+              placeholder = "Ingrese Correo"
+              onChangeText = {TextInputCorreo => this.setState({TextInputCorreo})}
               underlineColorAndroid = 'transparent'
               style = {styles.TextInputStyle}
             />
-            <Text style={styles.getStartedText}>Número de Serie:</Text>
+            <Text style={styles.getStartedText}>Area o facultad:</Text>
             <TextInput
-              placeholder = "Ingrese N/S"
-              onChangeText = {TextInputSerial => this.setState({TextInputSerial})}
-              underlineColorAndroid = 'transparent'
-              style = {styles.TextInputStyle}
-            />
-            <Text style={styles.getStartedText}>UAP:</Text>
-            <TextInput
-              placeholder = "Ingrese UAP"
-              onChangeText = {TextInputUAP => this.setState({TextInputUAP})}
+              placeholder = "Ingreser Area o Facultad"
+              onChangeText = {TextInputArea => this.setState({TextInputArea})}
               underlineColorAndroid = 'transparent'
               style = {styles.TextInputStyle}
             />
             <View style={[styles.SubmitButton]}>
-              <Button title="REGITRAR" onPress={this.InserDataToServer} color='#ff9633'/>
+              <Button title="ASIGNAR" onPress={this.InserDataToServer} color='#ff9633'/>
             </View>
           </View>
         </ScrollView>

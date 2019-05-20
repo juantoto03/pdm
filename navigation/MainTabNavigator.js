@@ -3,35 +3,18 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import RegisterUserScreen from '../screens/RegisterUserScreen';
+import AddUserScreen from '../screens/AddUserScreen';
+import AddDeviceScreen from '../screens/AddDeviceScreen';
 import RegisterDeviceScreen from '../screens/RegisterDeviceScreen';
-import LinksScreen from '../screens/LinksScreen';
+import AssignScreen from '../screens/AssignScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import DeleteScreen from '../screens/DeleteScreen';
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+const AddUserStack = createStackNavigator({
+  AddUser: AddUserScreen,
 });
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
-
-const RegisterUserStack = createStackNavigator({
-  RegisterUser: RegisterUserScreen,
-});
-
-RegisterUserStack.navigationOptions = {
+AddUserStack.navigationOptions = {
   tabBarLabel: 'Add User',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -50,6 +33,24 @@ const RegisterDeviceStack = createStackNavigator({
 });
 
 RegisterDeviceStack.navigationOptions = {
+  tabBarLabel: 'Register Device',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+const AddDeviceStack = createStackNavigator({
+  AddDevice: AddDeviceScreen,
+});
+
+AddDeviceStack.navigationOptions = {
   tabBarLabel: 'Add Device',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -63,12 +64,26 @@ RegisterDeviceStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const AssignStack = createStackNavigator({
+  Assign: AssignScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+AssignStack.navigationOptions = {
+  tabBarLabel: 'To Assign',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+    />
+  ),
+};
+
+const DeleteStack = createStackNavigator({
+  Delete: DeleteScreen,
+});
+
+DeleteStack.navigationOptions = {
+  tabBarLabel: 'Delete Device',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -92,9 +107,10 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
-  RegisterUserStack,
   RegisterDeviceStack,
-  LinksStack,
+  AddDeviceStack,
+  AssignStack,
+  DeleteStack,
+  AddUserStack,
   SettingsStack,
 });
